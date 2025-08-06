@@ -1,4 +1,4 @@
-package com.join.tab.controllers.main;
+package com.join.tab.controller.main;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
