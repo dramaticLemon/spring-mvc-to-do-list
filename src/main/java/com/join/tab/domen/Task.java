@@ -1,18 +1,21 @@
 package com.join.tab.domen;
 
+import java.util.UUID;
+
 public class Task {
-	private int id;
+	private UUID id;
 	private String text;
 	private boolean status;
 	
 	public Task() {
 	}
 
-	public Task(int id, String text, boolean status) {
-		this.id = id;
+	public Task(String text) {
+		this.id = UUID.randomUUID();
 		this.text = text;
-		this.status = status;
+		this.status = false;
 	}
+	
 	
 	public String getText() {
 		return text;
@@ -30,13 +33,8 @@ public class Task {
 		this.status = status;
 	}
 
-	public int getId() {
+	public UUID getId() {
 		return id;
 	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-	
 	
 }
