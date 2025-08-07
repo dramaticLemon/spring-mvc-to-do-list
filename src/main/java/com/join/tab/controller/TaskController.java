@@ -16,21 +16,16 @@ public class TaskController {
 	public TaskController(TaskService taskService) {
 		this.taskService = taskService;
 	}
-	@GetMapping("/form")
+	@GetMapping("/")
 	public String index(Model model) {
-		
+		model.addAttribute("tasks", taskService.getAllTasks());
 		return "index";
 	}
 
 	@PostMapping("/form")
 	public String submitTust(@RequestParam("text") String taskText) {
 		taskService.createTask(taskText);
-		return "redirect:/form";
+		return "redirect:/";
 	}
 
-	// @GetMapping("/api/tasks")
-	// @ResponseBody
-	// public List<Task> getAllTask() {
-	// 	return tasks;
-	// }
 }

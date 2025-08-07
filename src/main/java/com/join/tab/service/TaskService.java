@@ -1,5 +1,7 @@
 package com.join.tab.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,6 +23,10 @@ public class TaskService {
 		Task task = new Task(taskText);
 		taskRepository.save(task);
 		System.out.println("create task is: " + task);
+	}
+
+	public List<Task> getAllTasks() {
+		return taskRepository.getAllTask();
 	}
 	
 }

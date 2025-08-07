@@ -14,10 +14,12 @@ import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import jakarta.persistence.EntityManagerFactory;
 
 @Configuration
+@EnableTransactionManagement
 public class BaseJpaConfig {
 	
 	@Autowired

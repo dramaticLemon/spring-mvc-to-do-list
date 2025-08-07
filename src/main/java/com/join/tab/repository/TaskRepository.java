@@ -35,6 +35,8 @@ public class TaskRepository {
 	}
 
 	public List<Task> getAllTask() {
-		return null;
+		return entityManager.createQuery(
+			"select t from Task t",
+			Task.class).getResultList();
 	}
 }
