@@ -3,6 +3,9 @@ package com.join.tab.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -11,9 +14,14 @@ import org.thymeleaf.spring6.SpringTemplateEngine;
 import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring6.view.ThymeleafViewResolver;
 
+import com.join.tab.config.db.JpaDevConfig;
+
 @EnableWebMvc
 @Configuration
 @ComponentScan(basePackages= "com.join.tab")
+@PropertySource("classpath:database-dev.properties")
+@EnableTransactionManagement
+@Import(JpaDevConfig.class)
 public class ApplicationGlobalContainer implements WebMvcConfigurer{
 	  
     @Bean
