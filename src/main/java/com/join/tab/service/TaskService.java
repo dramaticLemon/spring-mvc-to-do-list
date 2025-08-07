@@ -1,6 +1,7 @@
 package com.join.tab.service;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,6 +28,10 @@ public class TaskService {
 
 	public List<Task> getAllTasks() {
 		return taskRepository.getAllTask();
+	}
+
+	public void deleteTask(UUID id) {
+		taskRepository.deleteById(id);
 	}
 	
 }

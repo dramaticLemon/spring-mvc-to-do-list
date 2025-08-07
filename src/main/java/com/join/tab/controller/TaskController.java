@@ -1,5 +1,7 @@
 package com.join.tab.controller;
 
+import java.util.UUID;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,7 @@ public class TaskController {
 	public TaskController(TaskService taskService) {
 		this.taskService = taskService;
 	}
+
 	@GetMapping("/")
 	public String index(Model model) {
 		model.addAttribute("tasks", taskService.getAllTasks());
@@ -25,6 +28,12 @@ public class TaskController {
 	@PostMapping("/form")
 	public String submitTust(@RequestParam("text") String taskText) {
 		taskService.createTask(taskText);
+		return "redirect:/";
+	}
+
+	@PostMapping("/tasks/delete")
+	public String deleteTask(@RequestParam("id") UUID id) {
+		taskService.deleteTask(id);
 		return "redirect:/";
 	}
 

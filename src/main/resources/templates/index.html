@@ -16,7 +16,23 @@
         </form>
 
         <ul id="task-list">
-            <li th:each="task : ${tasks}" th:text="${task.text}"></li>
+            <li th:each="task : ${tasks}" class="task-item">
+                <span th:text="${task.text}"></span>
+                
+                <form th:action="@{/tasks/edit}" method="get" style="display:inline">
+                    <input type="hidden" name="id" th:value="${task.id}"/>
+                    <button type="submit" title="Edit" style="background:none; border:none; cursor:pointer;">
+                        ✏️
+                    </button>
+                </form>
+
+                <form th:action="@{/tasks/delete}" method="post" style="display:inline">
+                    <input type="hidden" name="id" th:value="${task.id}"/>
+                    <button type="submit" title="Delete" style="background:none; border:none; cursor:pointer; color:red;">
+                        ❌
+                    </button>
+                </form>
+            </li>
         </ul>
         
     </div>
