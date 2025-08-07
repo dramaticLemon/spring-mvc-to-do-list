@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.join.tab.domen.Task;
 import com.join.tab.service.TaskService;
 
 @Controller
@@ -37,4 +38,20 @@ public class TaskController {
 		return "redirect:/";
 	}
 
+	@GetMapping("/tasks/edit")
+    public String editTaskForm(@RequestParam("id") UUID id, Model model) {
+        Task task = taskService.findById(id);
+        model.addAttribute("task", task);
+        return "edit-task";
+    }
+
+	@PostMapping("/tasks/edit")
+    public String editTaskSubmit(
+		@RequestParam("id") UUID id,
+        @RequestParam("text") String text) {
+        taskService.updateTaskText(id, text);
+        return "redirect:/";
+    }
+
+	
 }

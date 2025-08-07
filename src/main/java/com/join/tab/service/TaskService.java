@@ -34,4 +34,16 @@ public class TaskService {
 		taskRepository.deleteById(id);
 	}
 	
+	public Task findById(UUID id) {
+		return taskRepository.getTask(id);
+	}
+
+	@Transactional
+    public void updateTaskText(UUID id, String newText) {
+        Task task = findById(id);
+        if (task != null) {
+            task.setText(newText);
+            taskRepository.updateTask(task);
+        }
+    }
 }

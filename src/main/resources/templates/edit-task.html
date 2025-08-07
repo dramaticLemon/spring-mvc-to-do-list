@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Task</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="wrapper">
+    <div class="todo-app-container">
+        <h1>Edit Task</h1>
+        <form th:action="@{/tasks/edit}" method="post" id="todo-form">
+            <input type="hidden" name="id" th:value="${task.id}"/>
+            <input type="text" name="text" th:value="${task.text}" id="task-input" required/>
+            <button type="submit">Save</button>
+        </form>
+        <a href="/" style="display: block; margin-top: 15px; text-align: center; color: #007bff; text-decoration: none;">
+            Back to list
+        </a>
+    </div>
+</div>
+</body>
+</html>

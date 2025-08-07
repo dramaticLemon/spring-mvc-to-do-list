@@ -30,13 +30,13 @@ public class TaskRepository {
 		}
 	}
 
-	public Task updateTask(Task task) {
-		// update logic
-		return null;
+	@Transactional
+	public void updateTask(Task task) {
+		entityManager.merge(task);
 	}
 
-	public Task getTask(int id) {
-		return null;
+	public Task getTask(UUID id) {
+		return entityManager.find(Task.class, id);
 	}
 
 	public List<Task> getAllTask() {
